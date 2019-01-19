@@ -17,9 +17,3 @@ This is a content and comment web app. Users will be able to post content to pre
 - Navigate to the "readable" folder: `cd readable`
 - Install packages: `yarn install`
 - Run: `yarn run start`
-
-
-## III. Screenshots
-
-![](./home.jpg)
-![](./add-post.jpg)
