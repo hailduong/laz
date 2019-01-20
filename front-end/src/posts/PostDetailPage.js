@@ -3,44 +3,25 @@ import SideBar from "../global/SideBar";
 import Rating from '../global/Rating';
 import * as actionsObject from "./PostActions";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import CommentList from "../comments/CommentList";
 
 class PostPage extends React.Component {
 
-	handleUpVote = () => {
-		const thisPostID = this.props.posts[0].id;
-		this.props.upVotePost(thisPostID);
-	};
-
-	handleDownVote = () => {
-		const thisPostID = this.props.posts[0].id;
-		this.props.downVotePost(thisPostID);
-	};
-
-	handleDeletePost = () => {
-		const postID = this.props.posts[0].id;
-		this.props.deletePost(postID);
+	handleNotImplemented = () => {
+		console.info('[Product Detail] Not implemented :-)');
 	};
 
 	render() {
 
 		const {
-			itemId, itemTitle, body, voteScore, itemImg,
+			itemTitle, itemImg, itemReviews,
 			currency, itemPrice, itemDiscountPrice, itemDiscount, itemRatingScore
 		} = this.props.posts[0];
 
+		const likes = itemReviews * 3; // I know, just faking it here...
 
 		const paramPostID = this.props.match.params.post;
 
-		const postComments = (() => {
-			if (!!this.props.comments && !!this.props.comments[itemId]) {
-				return this.props.comments[itemId];
-			}
-			return [];
-		})();
-
-		const numberOfComments = postComments.length;
 		const price = `${itemPrice}${currency}`;
 		const discountedPrice = `${itemDiscountPrice}${currency}`;
 
@@ -67,7 +48,7 @@ class PostPage extends React.Component {
 					<div className="col-sm-8">
 						<div className="global__main-content">
 							<div className="post">
-								<h3 className="m-t-none">{itemTitle}</h3>
+								<h3 className="m-t-none mb-4">{itemTitle}</h3>
 								<div className="row">
 									<div className="col-sm-4">
 										<div className="thumbnail" style={thumbnailStyle}></div>
@@ -75,29 +56,33 @@ class PostPage extends React.Component {
 									<div className="col-sm-8">
 										<p className='mb-1'>
 											{discountBadgeNode}
-											{priceNode} |
-											Like: <strong>{voteScore}</strong>
+											{priceNode}
 										</p>
 										<p>
 											<Rating rating={itemRatingScore}/>
 										</p>
 										<p>
-											Reviews: <strong>{numberOfComments}</strong>
+											Reviews: <strong>{itemReviews}</strong>
+											<span className='ml-3 mr-3'>|</span>
+											Like: <strong>{likes}</strong>
 										</p>
 										<div className="actions">
 											<div className="btn-group btn-group-sm m-r-sm" role="group">
-												<button onClick={this.handleUpVote} type="button"
+												<button onClick={this.handleNotImplemented} type="button"
 														className="btn btn-default">
 													<i className="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
-												<button onClick={this.handleDownVote} type="button"
+												<button onClick={this.handleNotImplemented} type="button"
 														className="btn btn-default">
 													<i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
 												</button>
 											</div>
 											<div className="btn-group btn-group-sm" role="group">
-												<button className="btn btn-default">Add to wish list</button>
-												<button className="btn btn-primary"><i className="fa fa-fw fa-cart-plus"
-																					   aria-hidden="true"></i>
+												<button onClick={this.handleNotImplemented}
+														className="btn btn-default">Add to wish list
+												</button>
+												<button onClick={this.handleNotImplemented}
+														className="btn btn-primary">
+													<i className="fa fa-fw fa-cart-plus" aria-hidden="true"></i>
 													Add to Cart
 												</button>
 											</div>
@@ -136,18 +121,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	upVotePost: (postID) => {
-		dispatch(actionsObject.upVotePost(postID))
-	},
-	downVotePost: (postID) => {
-		dispatch(actionsObject.downVotePost(postID))
-	},
-	deletePost: (postID) => {
-		dispatch(actionsObject.deletePost(postID))
-	},
-	editPost: ({id, title, body}) => {
-		dispatch(actionsObject.editPost({id, title, body}))
-	},
 	getSinglePost: (postID) => {
 		dispatch(actionsObject.getSinglePost(postID))
 	}

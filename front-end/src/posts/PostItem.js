@@ -25,21 +25,14 @@ class Post extends React.Component {
 	render() {
 
 		const {
-			itemId, itemTitle, body, voteScore, itemImg,
+			itemId, itemTitle, body, itemImg, itemReviews,
 			currency, itemPrice, itemDiscountPrice, itemDiscount, itemRatingScore
 		} = this.props.content;
 
+		const likes = itemReviews * 3; // I know, just faking it here...
 
 		const postLink = `/item/${itemId}`;
 
-		const postComments = (() => {
-			if (!!this.props.comments && !!this.props.comments[itemId]) {
-				return this.props.comments[itemId];
-			}
-			return [];
-		})();
-
-		const numberOfComments = postComments.length;
 		const price = `${itemPrice}${currency}`;
 		const discountedPrice = `${itemDiscountPrice}${currency}`;
 
@@ -69,13 +62,15 @@ class Post extends React.Component {
 					<p>{body}</p>
 					<p className='mb-1'>
 						{discountBadgeNode}
-						{priceNode} |
-						Like: <strong>{voteScore}</strong>
+						{priceNode}
+						{itemRatingScore && <span className='ml-3 mr-2'>|</span>}
+						<Rating rating={itemRatingScore}/>
+
 					</p>
 					<p>
-						<Rating rating={itemRatingScore}/>
-						{itemRatingScore > 0 && <span className='ml-2 mr-2'>|</span>}
-						Reviews: <strong>{numberOfComments}</strong>
+						Reviews: <strong>{itemReviews}</strong>
+						<span className='ml-3 mr-3'>|</span>
+						Like: <strong>{likes}</strong>
 					</p>
 					<div className="btn-group btn-group-sm m-r-sm" role="group">
 						<button onClick={this.handleUpVote} type="button" className="btn btn-default">

@@ -78,8 +78,8 @@ class CommentList extends React.Component {
 
 		return (
 			<div className="comments m-t-lg">
-				<h4 className="m-b-md">Comments ({numberOfComments}):</h4>
-				<ul className="media-list">
+				<h4 className="m-b-md">Reviews ({numberOfComments}):</h4>
+				<ul className="list-unstyled">
 					{commentNodes}
 				</ul>
 				{addCommentForm}

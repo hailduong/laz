@@ -68,11 +68,11 @@ class Comment extends React.Component {
 		const editCommentForm = (() => {
 			if (editing) {
 				return (
-					<div className="new-comment m-b-lg m-t">
+					<div className="new-comment m-b-lg m-t animated fadeIn">
 						<form onSubmit={this.handleEditComment} name="formAddComment">
 							<textarea name="body" onChange={this.handleContentChange} value={this.state.editContent}
 									  className="form-control m-b-sm" rows="5" placeholder="Comment"></textarea>
-							<button type="submit" className="btn btn-primary btn-sm">Update Comment</button>
+							<button type="submit" className="btn btn-default btn-sm">Update Comment</button>
 						</form>
 					</div>
 				)
@@ -83,32 +83,34 @@ class Comment extends React.Component {
 		})();
 
 		return (
-			<li className="media m-b-lg">
-				<div className="media-left">
-					<a href="#">
-						<img className="media-object" src={commentPlaceHolderImage}/>
-					</a>
-				</div>
+			<li className="media m-b-lg animated fadeIn">
+				<img className="mr-3" src={commentPlaceHolderImage}/>
 				<div className="media-body">
 					<h4 className="media-heading">{author}</h4>
 					<div>{body}</div>
 					<div>Votes: {voteScore}</div>
-				</div>
-				<div className="media-actions m-t">
-					<div className="btn-group btn-group-sm m-r-sm">
-						<button onClick={this.handleUpVoteComment} type="button" className="btn btn-default">Up Vote
-						</button>
-						<button onClick={this.handleDownVoteComment} type="button" className="btn btn-default">Down
-							Vote
-						</button>
+					<div className="media-actions m-t">
+						<div className="btn-group btn-group-sm m-r-sm">
+							<button onClick={this.handleUpVoteComment} type="button" className="btn btn-default">
+								<i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
+							</button>
+							<button onClick={this.handleDownVoteComment} type="button" className="btn btn-default">
+								<i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
+							</button>
+						</div>
+						<div className="btn-group btn-group-sm">
+							<button onClick={this.editComment} type="button" className="btn btn-default">
+								<i className="fa fa-fw fa-pencil-square-o" aria-hidden="true"></i>
+								Edit
+							</button>
+							<button onClick={this.handleDeleteComment} type="button" className="btn btn-default">
+								<i className="fa fa-fw fa-trash-o" aria-hidden="true"></i>
+								Delete
+							</button>
+						</div>
 					</div>
-					<div className="btn-group btn-group-sm">
-						<button onClick={this.editComment} type="button" className="btn btn-default">Edit</button>
-						<button onClick={this.handleDeleteComment} type="button" className="btn btn-default">Delete
-						</button>
-					</div>
+					{editCommentForm}
 				</div>
-				{editCommentForm}
 			</li>
 		)
 	}
