@@ -11,7 +11,7 @@ export const getAllCategories = () => {
 			}
 		};
 
-		fetch("http://localhost:5001/categories", postsFetchConfigs)
+		fetch("/categories", postsFetchConfigs)
 			.then(response => response.json())
 			.then(data => {
 				console.log('Categories fetched', data);

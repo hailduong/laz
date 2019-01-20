@@ -1,5 +1,3 @@
-const fakeData = require('../global/fakeData');
-
 export const GET_ALL_POSTS = 'GET_ALL_POST';
 export const GET_CATEGORY_POSTS = 'GET_CATEGORY_POSTS';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
@@ -21,7 +19,7 @@ export const getAllPosts = () => {
 			}
 		};
 
-		fetch("http://localhost:5001/posts", postsFetchConfigs)
+		fetch("/posts", postsFetchConfigs)
 			.then(response => response.json())
 			.then(data => {
 				console.log('Posts fetched', data);
@@ -66,7 +64,7 @@ export const getSinglePost = (postID) => {
 			}
 		};
 
-		fetch(`http://localhost:5001/posts/${postID}`, singlePostFetchConfigs)
+		fetch(`/posts/${postID}`, singlePostFetchConfigs)
 			.then(response => response.json())
 			.then(data => {
 				console.log('Single posts fetched', data);
