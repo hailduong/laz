@@ -1,8 +1,7 @@
 import React from "react";
 import * as actionsObject from "./PostActions";
 import * as commentActionsObject from "../comments/CommentActions"
-import {Link} from "react-router-dom";
-
+import Rating from '../global/Rating';
 import {connect} from "react-redux";
 
 class Post extends React.Component {
@@ -43,40 +42,53 @@ class Post extends React.Component {
 		const price = `${itemPrice}${currency}`;
 		const discountedPrice = `${itemDiscountPrice}${currency}`;
 
+		const discountBadgeNode = itemDiscount
+			? <span className='badge badge-success mr-2'>{itemDiscount} off</span>
+			: null;
+
 		const priceNode = itemPrice
-			? <span><span className='original-price'>{price}</span> - <strong>{discountedPrice}</strong></span>
+			? <span>
+				<strong className='text-primary'>{discountedPrice}</strong>
+				<span className='mr-2 ml-2'>-</span>
+				<span className='original-price text-muted'>{price}</span>
+			  </span>
 			: <span><strong>{discountedPrice}</strong></span>;
 
-		const discountBadgeNode = itemDiscount
-			? <span className='badge badge-success mr-1'>{itemDiscount} off</span>
-			: null;
+		const thumbnailStyle = {
+			backgroundImage: `url(${itemImg})`
+		};
 
 		return (
 			<div className="row global__post m-b-xl animated fadeIn" data-id={itemId}>
 				<div className="col-sm-4">
-					<div className="thumbnail">
-						<img className="img-fluid" src={itemImg}/>
+					<div className="thumbnail" style={thumbnailStyle}>
 					</div>
 				</div>
 				<div className="col-sm-8 caption">
 					<h3 className="m-t-none"><a className="post-title" href={postLink}>{itemTitle}</a></h3>
 					<p>{body}</p>
-					<p>
+					<p className='mb-1'>
 						{discountBadgeNode}
 						{priceNode} |
 						Like: <strong>{voteScore}</strong>
-						Category: <strong>{category}</strong> |
-						Reviews: <strong>{numberOfComments}</strong> |
-						Rating: <strong>{itemRatingScore}</strong>
+					</p>
+					<p>
+						<Rating rating={itemRatingScore}/>
+						{itemRatingScore > 0 && <span className='ml-2 mr-2'>|</span>}
+						Reviews: <strong>{numberOfComments}</strong>
 					</p>
 					<div className="btn-group btn-group-sm m-r-sm" role="group">
-						<button onClick={this.handleUpVote} type="button" className="btn btn-default">Like</button>
-						<button onClick={this.handleDownVote} type="button" className="btn btn-default">Dislike
+						<button onClick={this.handleUpVote} type="button" className="btn btn-default">
+							<i className="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
+						<button onClick={this.handleDownVote} type="button" className="btn btn-default">
+							<i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
 						</button>
 					</div>
 					<div className="btn-group btn-group-sm" role="group">
-						<button className="btn btn-default">Buy Now</button>
-						<button className="btn btn-default">Add to Cart</button>
+						<button className="btn btn-default">Add to wish list</button>
+						<button className="btn btn-default"><i className="fa fa-fw fa-cart-plus" aria-hidden="true"></i>
+							Add to Cart
+						</button>
 					</div>
 				</div>
 			</div>

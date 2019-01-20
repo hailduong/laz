@@ -11,7 +11,7 @@ class ListPage extends React.Component {
 		super();
 
 		this.state = {
-			sort: "-itemDiscountPrice",
+			sort: "-itemRatingScore",
 			categories: []
 		}
 	}
