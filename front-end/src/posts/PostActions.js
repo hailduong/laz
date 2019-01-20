@@ -24,9 +24,6 @@ export const getAllPosts = () => {
 		fetch("http://localhost:5001/posts", postsFetchConfigs)
 			.then(response => response.json())
 			.then(data => {
-
-				// TODO: use data from server
-				data = fakeData.data.resultValue[201711102].data;
 				console.log('Posts fetched', data);
 				dispatch({
 					type: GET_ALL_POSTS,

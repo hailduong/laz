@@ -36,7 +36,8 @@
     "webpack-merge": "^4.2.1"
   },
   "scripts": {
-    "start": "webpack-dev-server -d --hot --inline",
+    "start": "webpack",
+    "start-webpack-dev-server": "webpack-dev-server -d --hot --inline",
     "start-server": "node ../server.js",
     "start-react-scripts": "react-scripts start",
     "build": "react-scripts build",

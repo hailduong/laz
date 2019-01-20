@@ -70,7 +70,8 @@ class Comment extends React.Component {
 				return (
 					<div className="new-comment m-b-lg m-t">
 						<form onSubmit={this.handleEditComment} name="formAddComment">
-							<textarea name="body" onChange={this.handleContentChange} value={this.state.editContent} className="form-control m-b-sm" rows="5" placeholder="Comment"></textarea>
+							<textarea name="body" onChange={this.handleContentChange} value={this.state.editContent}
+									  className="form-control m-b-sm" rows="5" placeholder="Comment"></textarea>
 							<button type="submit" className="btn btn-primary btn-sm">Update Comment</button>
 						</form>
 					</div>
@@ -95,12 +96,16 @@ class Comment extends React.Component {
 				</div>
 				<div className="media-actions m-t">
 					<div className="btn-group btn-group-sm m-r-sm">
-						<button onClick={this.handleUpVoteComment} type="button" className="btn btn-default">Up Vote</button>
-						<button onClick={this.handleDownVoteComment} type="button" className="btn btn-default">Down Vote</button>
+						<button onClick={this.handleUpVoteComment} type="button" className="btn btn-default">Up Vote
+						</button>
+						<button onClick={this.handleDownVoteComment} type="button" className="btn btn-default">Down
+							Vote
+						</button>
 					</div>
 					<div className="btn-group btn-group-sm">
 						<button onClick={this.editComment} type="button" className="btn btn-default">Edit</button>
-						<button onClick={this.handleDeleteComment} type="button" className="btn btn-default">Delete</button>
+						<button onClick={this.handleDeleteComment} type="button" className="btn btn-default">Delete
+						</button>
 					</div>
 				</div>
 				{editCommentForm}
@@ -109,6 +114,4 @@ class Comment extends React.Component {
 	}
 }
 
-export
-default
-Comment;
+export default Comment;

@@ -1,11 +1,10 @@
 import React from "react";
 import SideBar from "../global/SideBar";
+import Rating from '../global/Rating';
 import * as actionsObject from "./PostActions";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {Redirect} from 'react-router';
 import CommentList from "../comments/CommentList";
-import moment from "moment";
 
 class PostPage extends React.Component {
 
@@ -19,10 +18,6 @@ class PostPage extends React.Component {
 		this.props.downVotePost(thisPostID);
 	};
 
-	handleEditPost = () => {
-		// TODO: Edit Post
-	};
-
 	handleDeletePost = () => {
 		const postID = this.props.posts[0].id;
 		this.props.deletePost(postID);
@@ -30,69 +25,114 @@ class PostPage extends React.Component {
 
 	render() {
 
-		const {id, timestamp, title, body, author, category, voteScore, deleted} = this.props.posts[0];
-		const editLink = `/edit-post/${id}`;
+		const {
+			itemId, itemTitle, body, voteScore, itemImg,
+			currency, itemPrice, itemDiscountPrice, itemDiscount, itemRatingScore
+		} = this.props.posts[0];
+
+
 		const paramPostID = this.props.match.params.post;
-		const formattedDate = moment(timestamp).format("MMM DD YYYY");
 
-		let {thumbnailURL} = this.props.posts[0];
-		const randomNumber = Math.floor(Math.random() * 8) + 1;
-		if (!thumbnailURL) thumbnailURL = `.assets/images/${randomNumber}.jpg`;
+		const postComments = (() => {
+			if (!!this.props.comments && !!this.props.comments[itemId]) {
+				return this.props.comments[itemId];
+			}
+			return [];
+		})();
 
-		// Redirect to home page if the post is deleted;
-		if (!id || deleted) {
-			return (
-				<Redirect to="/"/>
-			)
-		}
+		const numberOfComments = postComments.length;
+		const price = `${itemPrice}${currency}`;
+		const discountedPrice = `${itemDiscountPrice}${currency}`;
 
+		const discountBadgeNode = itemDiscount
+			? <span className='badge badge-success mr-2'>{itemDiscount} off</span>
+			: null;
 
-		// Otherwise, just render it.
+		const priceNode = itemPrice
+			? <span>
+				<strong className='text-primary'>{discountedPrice}</strong>
+				<span className='mr-2 ml-2'>-</span>
+				<span className='original-price'>{price}</span>
+			  </span>
+			: <span><strong>{discountedPrice}</strong></span>;
+
+		const sidebarCategories = this.props.globalData && this.props.globalData.categories || [];
+		const thumbnailStyle = {
+			backgroundImage: `url(${itemImg})`
+		};
+
 		return (
-			<div className="container post-page animated fadeIn">
-				<div className="col-sm-8">
-					<div className="global__main-content">
-						<div className="post">
-							<h3 className="m-t-none">{title}</h3>
-							<div className="thumbnail">
-								<img className="img-fluid" src={thumbnailURL} alt=""/>
+			<div className="container page__post-detail animated fadeIn">
+				<div className="row">
+					<div className="col-sm-8">
+						<div className="global__main-content">
+							<div className="post">
+								<h3 className="m-t-none">{itemTitle}</h3>
+								<div className="row">
+									<div className="col-sm-4">
+										<div className="thumbnail" style={thumbnailStyle}></div>
+									</div>
+									<div className="col-sm-8">
+										<p className='mb-1'>
+											{discountBadgeNode}
+											{priceNode} |
+											Like: <strong>{voteScore}</strong>
+										</p>
+										<p>
+											<Rating rating={itemRatingScore}/>
+										</p>
+										<p>
+											Reviews: <strong>{numberOfComments}</strong>
+										</p>
+										<div className="actions">
+											<div className="btn-group btn-group-sm m-r-sm" role="group">
+												<button onClick={this.handleUpVote} type="button"
+														className="btn btn-default">
+													<i className="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
+												<button onClick={this.handleDownVote} type="button"
+														className="btn btn-default">
+													<i className="fa fa-thumbs-o-down" aria-hidden="true"></i>
+												</button>
+											</div>
+											<div className="btn-group btn-group-sm" role="group">
+												<button className="btn btn-default">Add to wish list</button>
+												<button className="btn btn-primary"><i className="fa fa-fw fa-cart-plus"
+																					   aria-hidden="true"></i>
+													Add to Cart
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<p>
-								Category: <strong>{category}</strong> |
-								Author: <strong>{author}</strong> |
-								VoteScore: <strong>{voteScore}</strong> |
-								Time: <strong>{formattedDate}</strong>
-							</p>
-							<p>{body}</p>
-							<div className="btn-group actions m-r-sm" role="group">
-								<button onClick={this.handleUpVote} type="button" className="btn btn-default">Up Vote</button>
-								<button onClick={this.handleDownVote} type="button" className="btn btn-default">Down Vote</button>
-							</div>
-							<div className="btn-group actions" role="group">
-								<Link to={editLink} onClick={this.handleEditPost} className="btn btn-default">Edit</Link>
-								<button onClick={this.handleDeletePost} type="button" className="btn btn-default">Delete</button>
-							</div>
+							<CommentList postID={paramPostID}/>
 						</div>
-						<CommentList postID={paramPostID}/>
 					</div>
-				</div>
-				<div className="col-sm-1"></div>
-				<div className="col-sm-3">
-					<SideBar/>
+					<div className="col-sm-1"></div>
+					<div className="col-sm-3">
+						<SideBar categories={sidebarCategories}/>
+					</div>
 				</div>
 			</div>
 		)
 	}
 
 	componentDidMount() {
-		const postID = this.props.match.params.post;
-		this.props.getSinglePost(postID);
+		const itemId = this.props.match.params.itemId;
+		this.props.getSinglePost(itemId);
+
+		// Get all the categories for the sidebar if we do not have the data.
+		// This is the case when we navigate to this page directly
+		if (this.props.globalData.categories.length === 0) {
+			this.props.getAllCategories();
+		}
 	}
 
 }
 
 const mapStateToProps = (state) => ({
-	posts: state.posts
+	posts: state.posts,
+	globalData: state.globalData
 });
 
 const mapDispatchToProps = (dispatch) => ({

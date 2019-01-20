@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import Navbar from "./global/Navbar";
 import ListPage from "./posts/PostListPage";
 import PostDetailPage from "./posts/PostDetailPage";
-import AddPostPage from "./posts/PostAddPage";
-import EditPostPage from "./posts/PostEditPage";
 import * as actionsObject from "./posts/PostActions";
 import * as globalActions from "./global/GlobalActions";
 
@@ -34,9 +32,12 @@ class App extends Component {
 							/>
 						)
 					}}/>
-					<Route exact path="/:category(react|redux|udacity)/:post" render={(props) => {
+					<Route exact path="/item/:itemId" render={(props) => {
 						return (
-							<PostDetailPage match={props.match}/>
+							<PostDetailPage match={props.match}
+											globalData={globalData}
+											getAllCategories={getAllCategories}
+							/>
 						)
 					}}/>
 				</div>

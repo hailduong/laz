@@ -19,6 +19,11 @@ body { padding-top: 100px !important; color: $body-color}
 	}
 }
 
+.rating {
+	i {color: rgb(255, 103, 0); opacity: 0.7; transition: opacity 0.3s;}
+	i:hover {opacity: 1;}
+}
+
 a { text-decoration: none; transition: color 0.3s; color: $link-color;
 	&:hover { text-decoration: none; color: $primary-color }
 }
@@ -29,8 +34,10 @@ a { text-decoration: none; transition: color 0.3s; color: $link-color;
 	&.btn-default { border-color: rgba(195, 207, 213, 0.6); color: $body-color }
 	&:hover { box-shadow: 0 14px 26px -12px rgba(153, 153, 153, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(153, 153, 153, 0.2) }
 
-	&.btn-primary { background-color: #9c27b0; border: 0; box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12) }
-	&.btn-primary:hover { box-shadow: 0 14px 26px -12px rgba(156, 39, 176, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2) }
+	&.btn-primary { background-color: #00BCD4; border: 0;
+		box-shadow: 0 2px 2px 0 rgba(39, 160, 176, 0.14), 0 3px 1px -2px rgba(39, 160, 176, 0.2), 0 1px 5px 0 rgba(39, 160, 176, 0.12) }
+	&.btn-primary:hover {
+		box-shadow: 0 14px 26px -12px rgba(39, 160, 176, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(39, 160, 176, 0.2) }
 }
 
 .text-primary {color: $primary-color !important}
@@ -63,11 +70,7 @@ a { text-decoration: none; transition: color 0.3s; color: $link-color;
 			line-height: 26px; font-size: 23px;
 			&:first-letter {text-transform: uppercase;}
 		}
-		.rating {
-			i {color: rgb(255, 103, 0); opacity: 0.7; transition: opacity 0.3s;}
-			i:hover {opacity: 1;}
-		}
-		.original-price {text-decoration: line-through;}
+		.original-price {text-decoration: line-through; color: #90a4ae;}
 	}
 
 	&__sidebar {
@@ -90,5 +93,11 @@ a { text-decoration: none; transition: color 0.3s; color: $link-color;
 			label {margin-bottom: 0; padding-left: 3px;}
 			.radio-inline {line-height: 19px;}
 		}
+	}
+
+	&__post-detail {
+		.thumbnail {background-size: cover; height: 150px;}
+		.original-price {text-decoration: line-through; color: #90a4ae;}
+		.actions {margin-top: 28px;}
 	}
 }

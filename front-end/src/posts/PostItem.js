@@ -3,6 +3,7 @@ import * as actionsObject from "./PostActions";
 import * as commentActionsObject from "../comments/CommentActions"
 import Rating from '../global/Rating';
 import {connect} from "react-redux";
+import {Link} from 'react-router-dom';
 
 class Post extends React.Component {
 
@@ -24,7 +25,7 @@ class Post extends React.Component {
 	render() {
 
 		const {
-			itemId, timestamp, itemTitle, body, author, category, voteScore, deleted, itemImg,
+			itemId, itemTitle, body, voteScore, itemImg,
 			currency, itemPrice, itemDiscountPrice, itemDiscount, itemRatingScore
 		} = this.props.content;
 
@@ -50,7 +51,7 @@ class Post extends React.Component {
 			? <span>
 				<strong className='text-primary'>{discountedPrice}</strong>
 				<span className='mr-2 ml-2'>-</span>
-				<span className='original-price text-muted'>{price}</span>
+				<span className='original-price'>{price}</span>
 			  </span>
 			: <span><strong>{discountedPrice}</strong></span>;
 
@@ -61,11 +62,10 @@ class Post extends React.Component {
 		return (
 			<div className="row global__post m-b-xl animated fadeIn" data-id={itemId}>
 				<div className="col-sm-4">
-					<div className="thumbnail" style={thumbnailStyle}>
-					</div>
+					<div className="thumbnail" style={thumbnailStyle}></div>
 				</div>
 				<div className="col-sm-8 caption">
-					<h3 className="m-t-none"><a className="post-title" href={postLink}>{itemTitle}</a></h3>
+					<h3 className="m-t-none"><Link className="post-title" to={postLink}>{itemTitle}</Link></h3>
 					<p>{body}</p>
 					<p className='mb-1'>
 						{discountBadgeNode}

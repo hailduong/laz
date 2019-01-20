@@ -20,7 +20,7 @@ class CommentList extends React.Component {
 		};
 
 		this.props.addComment(commentObject);
-		
+
 		// Clear the comment form after adding the comment
 		event.target.reset();
 	};
@@ -40,8 +40,8 @@ class CommentList extends React.Component {
 			<div className="new-comment m-b-xl">
 				<form onSubmit={this.handleAddComment} name="formAddComment">
 					<input name="author" type="text" className="form-control m-b-sm" placeholder="Your name"/>
-					<textarea name="body" className="form-control m-b-sm" rows="5" placeholder="Comment"></textarea>
-					<button type="submit" className="btn btn-primary btn-sm">Add Comment</button>
+					<textarea name="body" className="form-control m-b-sm" rows="5" placeholder="Review"></textarea>
+					<button type="submit" className="btn btn-default btn-sm">Add Review</button>
 				</form>
 			</div>
 		);
@@ -50,11 +50,11 @@ class CommentList extends React.Component {
 		// If there is no comment, render the add form.
 		if (numberOfComments === 0) {
 			return (
-				<div className="comments m-t-lg">
-					<h4 className="m-b-md">Comments:</h4>
-					<p>There is no comment currently!
+				<div className="comments mt-5">
+					<h4 className="mb-1">Reviews</h4>
+					<p>There is no review currently!
 						<br/>
-						You might want to be the first to comment?
+						You might want to be the first to review?
 					</p>
 					{addCommentForm}
 				</div>

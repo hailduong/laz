@@ -13,7 +13,7 @@ let config = {
 		'laz': ['./src/index.js']
 	},
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'assets'),
 		publicPath: '/',
 		filename: '[name].js',
 		library: '[name]',
@@ -53,6 +53,7 @@ let config = {
 			filename: "[name].css"
 		})
 	],
+	watch: true,
 	devtool: 'source-map',
 	devServer: {
 		contentBase: './',
