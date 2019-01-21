@@ -40,13 +40,13 @@ Well, due to time constraint, the following items were intended, but were not im
 
 ## IV. Installation
 
-### 1. Server
+### 1. Back-end
 
 - Install packages: `yarn install` or `npm install`
 - Launch server: `node server`
 - Unless modified in `config.js` server will use port `5001`
 
-### 2. Front end
+### 2. Front-end
 
 - Navigate to the "front-end" folder: `cd front-end`
 - Install packages: `yarn install` or `npm install`
@@ -55,19 +55,19 @@ Well, due to time constraint, the following items were intended, but were not im
 
 ## V. Screenshots:
 
-A. Home page:
+#### A. Home page:
 
 <img src='./desktop_home.jpg' width='1680'>
 
-B. Detail page:
+#### B. Detail page:
 
 <img src='./desktop_detail.jpg' width='1680'>
 
-C. iPad version:
+#### C. iPad version:
 
 <img src='./ipad.jpg' width='567'>
 
-D. iPhone version:
+#### D. iPhone version:
 
 <img src='./iphone.jpg' width='410'>
 
