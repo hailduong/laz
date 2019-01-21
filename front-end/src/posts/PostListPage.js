@@ -35,7 +35,7 @@ class ListPage extends React.Component {
 
 					// Only return posts that are not deleted
 					if (!post.deleted) {
-						return <Post key={post.id} content={post}/>
+						return <Post key={index} content={post}/>
 					}
 
 				});

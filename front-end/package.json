@@ -1,10 +1,11 @@
 {
-  "name": "readable",
+  "name": "laz",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "1.0.11",
-    "webpack-cli": "^3.2.1"
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
@@ -32,16 +33,13 @@
     "sort-by": "^1.2.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.28.4",
-    "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.2.1"
   },
   "scripts": {
-    "start": "webpack",
-    "start-webpack-dev-server": "webpack-dev-server -d --hot --inline",
+    "start": "webpack --env.NODE_ENV=development --config ./webpack.config.js",
+    "build": "webpack --env.NODE_ENV=production --config ./webpack.config.js",
     "start-server": "node ../server.js",
-    "start-react-scripts": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start-webpack-dev-server": "webpack-dev-server -d --hot --inline",
+    "start-react-scripts": "react-scripts start"
   }
 }

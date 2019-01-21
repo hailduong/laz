@@ -17,16 +17,18 @@ export const getAllComments = (postID) => {
 			}
 		};
 
-		fetch(`/posts/${postID}/comments`, fetchConfig)
-			.then(response => response.json())
-			.then(data => {
-				console.log('Comments fetched', data);
-				dispatch({
-					type: GET_ALL_COMMENTS,
-					comments: data,
-					postID: postID
-				})
-			});
+		// fetch(`/posts/${postID}/comments`, fetchConfig)
+		// 	.then(response => response.json())
+		// 	.then(data => {
+		// 		console.log('Comments fetched', data);
+		//
+		// 	});
+		const data = []; // fake data
+		dispatch({
+			type: GET_ALL_COMMENTS,
+			comments: data,
+			postID: postID
+		})
 	}
 };
 export const getSingleComment = (commentID) => {
