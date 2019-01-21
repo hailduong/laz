@@ -10,25 +10,11 @@ class ListPage extends React.Component {
 	constructor() {
 		super();
 
+		// TODO: not working so well here :-( need to fix this T_T
 		this.state = {
 			sort: "-itemRatingScore",
 			categories: []
 		}
-	}
-
-	componentWillReceiveProps(nextProps) {
-
-		// Set All-Posts / Category-Posts
-		if (!!this.props.match) {
-
-			const currentMatchedCategory = this.props.match.params.category;
-			const nextMathcedCategory = nextProps.match.params.category;
-
-			if (currentMatchedCategory !== nextMathcedCategory) {
-				this.props.getCategoryPosts(nextMathcedCategory)
-			}
-		}
-
 	}
 
 	sort = (sortOrder) => {
@@ -65,17 +51,17 @@ class ListPage extends React.Component {
 		return (
 			<div className="container page__list-all-post">
 				<div className="row">
-					<div className="col-sm-8">
+					<div className="col-12 col-lg-8">
 						<div className="row m-b-lg">
-							<div className="col-sm-6">All products: <strong>{totalNumberOfProducts}</strong></div>
-							<div className="col-sm-6"><Sort sort={this.sort}/></div>
+							<div className="col-6">All products: <strong>{totalNumberOfProducts}</strong></div>
+							<div className="col-6"><Sort sort={this.sort}/></div>
 						</div>
 						<div className="global__main-content">
 							{postsNode}
 						</div>
 					</div>
-					<div className="col-sm-1"></div>
-					<div className="col-sm-3">
+					<div className="col-lg-1 d-none d-lg-block d-xl-block"></div>
+					<div className="col-lg-3 d-none d-lg-block d-xl-block">
 						<SideBar categories={sidebarCategories}/>
 					</div>
 				</div>
@@ -84,14 +70,13 @@ class ListPage extends React.Component {
 	}
 
 	componentDidMount() {
-		// Fetch posts after the component is mounted
-		const currentCategory = !!this.props.match && this.props.match.params.category;
 
-		!!currentCategory
-			? this.props.getCategoryPosts(currentCategory)
-			: this.props.getAllPosts();
+		// Get all posts
+		// TODO: should have a condition here, no need to fetch if we have already
+		this.props.getAllPosts();
 
 		// Get all the categories for the sidebar.
+		// TODO: should have a condition here, no need to fetch if we have already
 		this.props.getAllCategories();
 	}
 

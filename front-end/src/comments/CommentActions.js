@@ -17,7 +17,7 @@ export const getAllComments = (postID) => {
 			}
 		};
 
-		fetch(`http://localhost:5001/posts/${postID}/comments`, fetchConfig)
+		fetch(`/posts/${postID}/comments`, fetchConfig)
 			.then(response => response.json())
 			.then(data => {
 				console.log('Comments fetched', data);
@@ -40,7 +40,7 @@ export const getSingleComment = (commentID) => {
 			}
 		};
 
-		fetch(`http://localhost:5001/comments/${commentID}`, fetchConfigs)
+		fetch(`/comments/${commentID}`, fetchConfigs)
 			.then(response => response.json())
 			.then(data => {
 				console.log('Single comment fetched', data);
@@ -65,7 +65,7 @@ export const addNewComment = ({id, timestamp, body, author, parentId}) => {
 			})
 		};
 
-		fetch(`http://localhost:5001/comments`, fetchConfigs)
+		fetch(`/comments`, fetchConfigs)
 			.then(response => response.json())
 			.then(data => {
 				console.log('Single posts fetched', data);
@@ -89,7 +89,7 @@ export const editComment = ({id, timestamp, body, parentId}) => {
 			})
 		};
 
-		fetch(`http://localhost:5001/comments/${id}`, fetchConfigs)
+		fetch(`/comments/${id}`, fetchConfigs)
 			.then(response => response.json())
 			.then(data => {
 				dispatch({
@@ -106,7 +106,7 @@ export const deleteComment = (id, postID) => {
 			headers: {'Authorization': 'key', "Content-Type": "application/json"}
 		};
 
-		fetch(`http://localhost:5001/comments/${id}`, fetchConfigs).then(data => {
+		fetch(`/comments/${id}`, fetchConfigs).then(data => {
 			dispatch({
 				type: DELETE_COMMENT,
 				commentID: id,
@@ -126,7 +126,7 @@ export const upVoteComment = (commentID, postID) => {
 			})
 		};
 
-		fetch(`http://localhost:5001/comments/${commentID}`, fetchConfigs).then(data => {
+		fetch(`/comments/${commentID}`, fetchConfigs).then(data => {
 			dispatch({
 				type: UP_VOTE_COMMENT,
 				commentID,
@@ -148,7 +148,7 @@ export const downVoteComment = (commentID, postID) => {
 			})
 		};
 
-		fetch(`http://localhost:5001/comments/${commentID}`, fetchConfigs).then(data => {
+		fetch(`/comments/${commentID}`, fetchConfigs).then(data => {
 			dispatch({
 				type: DOWN_VOTE_COMMENT,
 				commentID,

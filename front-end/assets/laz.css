@@ -12480,6 +12480,9 @@ a {
     text-decoration: none;
     color: #F37021; }
 
+.click-able {
+  cursor: pointer; }
+
 .btn {
   box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14), 0 3px 1px -2px rgba(153, 153, 153, 0.2), 0 1px 5px 0 rgba(153, 153, 153, 0.12);
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -12560,6 +12563,8 @@ a {
     margin-bottom: -1px; }
     .global__sidebar .categories li a {
       color: #455a64; }
+    .global__sidebar .categories li a:hover {
+      color: #F37021; }
 
 .page__list-all-post .sort label {
   margin-bottom: 0;
@@ -12567,6 +12572,11 @@ a {
 
 .page__list-all-post .sort .radio-inline {
   line-height: 19px; }
+
+.page__post-detail h3 {
+  text-transform: lowercase; }
+  .page__post-detail h3:first-letter {
+    text-transform: uppercase; }
 
 .page__post-detail .thumbnail {
   background-size: cover;

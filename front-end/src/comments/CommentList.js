@@ -11,11 +11,12 @@ class CommentList extends React.Component {
 		const formData = serialize(event.target, {hash: true});
 		const postID = this.props.postID;
 
+		// TODO: we might want to validate instead of faking content...
 		const commentObject = {
 			id: Date.now(),
 			timestamp: Date.now(),
-			body: formData.body,
-			author: formData.author,
+			body: formData.body || 'No comment!', // just faking the content for now... ;)
+			author: formData.author || 'Anonymous',
 			parentId: postID
 		};
 

@@ -55,7 +55,9 @@ class Post extends React.Component {
 		return (
 			<div className="row global__post m-b-xl animated fadeIn" data-id={itemId}>
 				<div className="col-sm-4">
-					<div className="thumbnail" style={thumbnailStyle}></div>
+					<Link className="post-title" to={postLink}>
+						<div className="thumbnail" style={thumbnailStyle}></div>
+					</Link>
 				</div>
 				<div className="col-sm-8 caption">
 					<h3 className="m-t-none"><Link className="post-title" to={postLink}>{itemTitle}</Link></h3>
@@ -65,7 +67,6 @@ class Post extends React.Component {
 						{priceNode}
 						{itemRatingScore && <span className='ml-3 mr-2'>|</span>}
 						<Rating rating={itemRatingScore}/>
-
 					</p>
 					<p>
 						Reviews: <strong>{itemReviews}</strong>
@@ -107,13 +108,6 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	downVotePost: (postID) => {
 		dispatch(actionsObject.downVotePost(postID))
-	},
-	deletePost: (postID) => {
-		dispatch(actionsObject.deletePost(postID))
-	},
-	editPost: ({id, title, body}) => {
-		// TODO: Edit Post
-		dispatch(actionsObject.editPost({id, title, body}))
 	},
 	getAllComments: (postID) => {
 		dispatch(commentActionsObject.getAllComments(postID))

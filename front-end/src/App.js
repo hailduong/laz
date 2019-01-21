@@ -14,7 +14,7 @@ class App extends Component {
 	render() {
 
 		const {
-			getAllPosts, getCategoryPosts, posts, comments,
+			getAllPosts, posts, comments,
 			globalData, getAllCategories
 		} = this.props;
 
@@ -56,15 +56,6 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	getAllPosts: () => {
 		dispatch(actionsObject.getAllPosts())
-	},
-	getCategoryPosts: (category) => {
-		dispatch(actionsObject.getCategoryPosts(category))
-	},
-	addNewPost: ({id, timestamp, postTitle, postContent, postAuthor, postCategory} = {}) => {
-		dispatch(actionsObject.addNewPost({id, timestamp, postTitle, postContent, postAuthor, postCategory}))
-	},
-	editPost: ({id, title, body}) => {
-		dispatch(actionsObject.editPost({id, title, body}))
 	},
 	getAllCategories: () => {
 		dispatch(globalActions.getAllCategories())

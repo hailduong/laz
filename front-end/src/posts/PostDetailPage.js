@@ -45,7 +45,7 @@ class PostPage extends React.Component {
 		return (
 			<div className="container page__post-detail animated fadeIn">
 				<div className="row">
-					<div className="col-sm-8">
+					<div className="col-12 col-lg-8">
 						<div className="global__main-content">
 							<div className="post">
 								<h3 className="m-t-none mb-4">{itemTitle}</h3>
@@ -93,8 +93,8 @@ class PostPage extends React.Component {
 							<CommentList postID={paramPostID}/>
 						</div>
 					</div>
-					<div className="col-sm-1"></div>
-					<div className="col-sm-3">
+					<div className="col-lg-1 d-none d-lg-block d-xl-block"></div>
+					<div className="col-lg-3 d-none d-lg-block d-xl-block">
 						<SideBar categories={sidebarCategories}/>
 					</div>
 				</div>

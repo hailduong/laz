@@ -15,12 +15,14 @@ const Sort = (props) => {
 		<div className="sort text-right awe-check d-flex align-items-center justify-content-end">
 			<span className="m-r-sm">Sort by:</span>
 			<span className="radio-inline radio radio-success">
-				<input type="radio" onClick={sortByPrice} name="sortPosts" id="sort-by-price" value="price"/>
-				<label htmlFor="sort-by-price">Price</label>
+				<input className='click-able' defaultChecked={true} type="radio" onClick={sortByRating} name="sortPosts"
+					   id="sort-by-rating" value="rating"/>
+				<label className='click-able' htmlFor="sort-by-rating">Rating</label>
 			</span>
 			<span className="radio-inline radio radio-success">
-				<input defaultChecked={true} type="radio" onClick={sortByRating} name="sortPosts" id="sort-by-rating" value="rating"/>
-				<label htmlFor="sort-by-rating">Rating</label>
+				<input className='click-able' type="radio" onClick={sortByPrice} name="sortPosts" id="sort-by-price"
+					   value="price"/>
+				<label className='click-able' htmlFor="sort-by-price">Price</label>
 			</span>
 		</div>
 	)

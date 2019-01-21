@@ -5,6 +5,7 @@ $primary-color: #F37021;
 
 body { padding-top: 100px !important; color: $body-color}
 
+
 .thumbnail {
 	box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14),
 	0 3px 1px -2px rgba(153, 153, 153, 0.2),
@@ -27,6 +28,7 @@ body { padding-top: 100px !important; color: $body-color}
 a { text-decoration: none; transition: color 0.3s; color: $link-color;
 	&:hover { text-decoration: none; color: $primary-color }
 }
+.click-able{cursor: pointer;}
 
 .btn {
 	box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14), 0 3px 1px -2px rgba(153, 153, 153, 0.2), 0 1px 5px 0 rgba(153, 153, 153, 0.12);
@@ -80,6 +82,7 @@ a { text-decoration: none; transition: color 0.3s; color: $link-color;
 			li {
 				padding: 5px 0; border-bottom: 1px dashed #ddd; border-top: 1px dashed #ddd; margin-bottom: -1px;
 				a { color: $body-color}
+				a:hover {color: $primary-color}
 			}
 
 		}
@@ -96,6 +99,9 @@ a { text-decoration: none; transition: color 0.3s; color: $link-color;
 	}
 
 	&__post-detail {
+		h3 {text-transform: lowercase;
+			&:first-letter {text-transform: uppercase;}
+		}
 		.thumbnail {background-size: cover; height: 150px;}
 		.original-price {text-decoration: line-through; color: #90a4ae;}
 		.actions {margin-top: 28px;}
