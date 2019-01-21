@@ -12528,8 +12528,11 @@ a {
       color: #fff;
       background: rgba(255, 255, 255, 0.3); }
 
+.global__post {
+  margin-bottom: 50px; }
+
 .global__post .thumbnail {
-  height: 160px;
+  height: 166px;
   overflow: hidden;
   background-size: cover; }
 
@@ -12573,6 +12576,16 @@ a {
 .page__list-all-post .sort .radio-inline {
   line-height: 19px; }
 
+@media (max-width: 575.98px) {
+  .page__list-all-post .thumbnail {
+    margin-bottom: 20px; }
+  .page__list-all-post .caption {
+    padding-left: 15px; }
+  .page__list-all-post .all-products {
+    display: block;
+    margin-top: -15px;
+    margin-bottom: -10px; } }
+
 .page__post-detail h3 {
   text-transform: lowercase; }
   .page__post-detail h3:first-letter {
@@ -12588,6 +12601,12 @@ a {
 
 .page__post-detail .actions {
   margin-top: 28px; }
+
+@media (max-width: 575.98px) {
+  .page__post-detail h3 {
+    margin-top: -15px; }
+  .page__post-detail .thumbnail {
+    margin-bottom: 20px; } }
 
 body {
   margin: 0;

@@ -53,8 +53,10 @@ class ListPage extends React.Component {
 				<div className="row">
 					<div className="col-12 col-lg-8">
 						<div className="row m-b-lg">
-							<div className="col-6">All products: <strong>{totalNumberOfProducts}</strong></div>
-							<div className="col-6"><Sort sort={this.sort}/></div>
+							<div className="col-6"><span
+								className='all-products'>All products: <strong>{totalNumberOfProducts}</strong></span>
+							</div>
+							<div className="col-6 d-none d-lg-block d-xl-block"><Sort sort={this.sort}/></div>
 						</div>
 						<div className="global__main-content">
 							{postsNode}

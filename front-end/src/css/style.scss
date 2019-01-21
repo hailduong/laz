@@ -5,7 +5,6 @@ $primary-color: #F37021;
 
 body { padding-top: 100px !important; color: $body-color}
 
-
 .thumbnail {
 	box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14),
 	0 3px 1px -2px rgba(153, 153, 153, 0.2),
@@ -28,7 +27,8 @@ body { padding-top: 100px !important; color: $body-color}
 a { text-decoration: none; transition: color 0.3s; color: $link-color;
 	&:hover { text-decoration: none; color: $primary-color }
 }
-.click-able{cursor: pointer;}
+
+.click-able {cursor: pointer;}
 
 .btn {
 	box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14), 0 3px 1px -2px rgba(153, 153, 153, 0.2), 0 1px 5px 0 rgba(153, 153, 153, 0.12);
@@ -66,7 +66,8 @@ a { text-decoration: none; transition: color 0.3s; color: $link-color;
 	}
 
 	&__post {
-		.thumbnail {height: 160px; overflow: hidden; background-size: cover;}
+		& {margin-bottom: 50px;}
+		.thumbnail {height: 166px; overflow: hidden; background-size: cover;}
 		.caption { padding-left: 30px; }
 		a.post-title { transition: color 0.3s; text-transform: lowercase; display: block;
 			line-height: 26px; font-size: 23px;
@@ -96,6 +97,13 @@ a { text-decoration: none; transition: color 0.3s; color: $link-color;
 			label {margin-bottom: 0; padding-left: 3px;}
 			.radio-inline {line-height: 19px;}
 		}
+
+		// For small phones
+		@media (max-width: 575.98px) {
+			.thumbnail {margin-bottom: 20px;}
+			.caption {padding-left: 15px;}
+			.all-products {display: block;margin-top: -15px;margin-bottom: -10px;}
+		}
 	}
 
 	&__post-detail {
@@ -105,5 +113,11 @@ a { text-decoration: none; transition: color 0.3s; color: $link-color;
 		.thumbnail {background-size: cover; height: 150px;}
 		.original-price {text-decoration: line-through; color: #90a4ae;}
 		.actions {margin-top: 28px;}
+
+		// For small phones
+		@media (max-width: 575.98px) {
+			h3 {margin-top: -15px;}
+			.thumbnail {margin-bottom: 20px;}
+		}
 	}
 }

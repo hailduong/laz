@@ -31502,12 +31502,11 @@ class Post extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       backgroundImage: `url(${itemImg})`
     };
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "row global__post m-b-xl animated fadeIn",
+      className: "row global__post animated fadeIn",
       "data-id": itemId
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "col-sm-4"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
-      className: "post-title",
       to: postLink
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "thumbnail",
@@ -31657,8 +31656,10 @@ class ListPage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       className: "row m-b-lg"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "col-6"
-    }, "All products: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, totalNumberOfProducts)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "col-6"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "all-products"
+    }, "All products: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, totalNumberOfProducts))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-6 d-none d-lg-block d-xl-block"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_global_Sort__WEBPACK_IMPORTED_MODULE_2__["default"], {
       sort: this.sort
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

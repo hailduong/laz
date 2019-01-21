@@ -53,9 +53,9 @@ class Post extends React.Component {
 		};
 
 		return (
-			<div className="row global__post m-b-xl animated fadeIn" data-id={itemId}>
+			<div className="row global__post animated fadeIn" data-id={itemId}>
 				<div className="col-sm-4">
-					<Link className="post-title" to={postLink}>
+					<Link to={postLink}>
 						<div className="thumbnail" style={thumbnailStyle}></div>
 					</Link>
 				</div>
