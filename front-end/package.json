@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "1.0.11",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
   },
@@ -39,7 +38,6 @@
     "start": "webpack --env.NODE_ENV=development --config ./webpack.config.js",
     "build": "webpack --env.NODE_ENV=production --config ./webpack.config.js",
     "start-server": "node ../server.js",
-    "start-webpack-dev-server": "webpack-dev-server -d --hot --inline",
-    "start-react-scripts": "react-scripts start"
+    "start-webpack-dev-server": "webpack-dev-server -d --hot --inline"
   }
 }

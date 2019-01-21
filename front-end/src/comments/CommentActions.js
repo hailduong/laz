@@ -23,6 +23,7 @@ export const getAllComments = (postID) => {
 		// 		console.log('Comments fetched', data);
 		//
 		// 	});
+
 		const data = []; // fake data
 		dispatch({
 			type: GET_ALL_COMMENTS,
@@ -67,15 +68,17 @@ export const addNewComment = ({id, timestamp, body, author, parentId}) => {
 			})
 		};
 
-		fetch(`/comments`, fetchConfigs)
-			.then(response => response.json())
-			.then(data => {
-				console.log('Single posts fetched', data);
-				dispatch({
-					type: ADD_NEW_COMMENT,
-					commentObject: {id, timestamp, body, author, parentId}
-				})
-			});
+		// fetch(`/comments`, fetchConfigs)
+		// 	.then(response => response.json())
+		// 	.then(data => {
+		// 		console.log('Single posts fetched', data);
+		//
+		// 	});
+
+		dispatch({
+			type: ADD_NEW_COMMENT,
+			commentObject: {id, timestamp, body, author, parentId}
+		})
 	}
 };
 export const editComment = ({id, timestamp, body, parentId}) => {
